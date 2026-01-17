@@ -8,7 +8,7 @@ import { EmailUploader } from "@/components/EmailUploader"
 import { EmailTextInput } from "@/components/EmailTextInput"
 import { ClassificationResult } from "@/components/ClassificationResult"
 import { LoadingSpinner } from "@/components/LoadingSpinner"
-import { classifyEmailFromFile, classifyEmailFromText } from "@/lib/api"
+import { classifyEmailFromFile, classifyEmailFromText } from "./lib/api"
 import type { EmailClassification, ApiError } from "@/lib/types"
 
 type TabValue = "upload" | "text"
