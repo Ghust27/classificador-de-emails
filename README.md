@@ -113,8 +113,7 @@ backend/
 │   │   ├── ai_service.py       # Integração com OpenAI
 │   │   └── classifier.py       # Lógica de classificação
 │   └── utils/
-│       ├── file_parser.py      # Parser para .txt e .pdf
-│       └── text_processor.py   # Processamento de texto
+│       └── file_parser.py      # Parser para .txt e .pdf
 ├── requirements.txt            # Dependências Python
 └── .env                        # Variáveis de ambiente (não incluído)
 ```
