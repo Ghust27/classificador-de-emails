@@ -1,15 +1,8 @@
 import { useCallback, useState } from "react"
 import { Upload, File, X } from "lucide-react"
-import { Card } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-
-interface EmailUploaderProps {
-  onFileSelect: (file: File) => void
-  selectedFile: File | null
-  onClear: () => void
-  disabled?: boolean
-}
+import { Card } from "./ui/card"
+import { Button } from "./ui/button"
+import { cn } from "../lib/utils"
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024
 const ACCEPTED_TYPES = [".txt", ".pdf"]
@@ -19,11 +12,11 @@ export function EmailUploader({
   selectedFile,
   onClear,
   disabled = false,
-}: EmailUploaderProps) {
+}) {
   const [isDragging, setIsDragging] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState(null)
 
-  const validateFile = (file: File): string | null => {
+  const validateFile = (file) => {
     const fileExtension = "." + file.name.split(".").pop()?.toLowerCase()
     
     if (!ACCEPTED_TYPES.includes(fileExtension)) {
@@ -38,7 +31,7 @@ export function EmailUploader({
   }
 
   const handleFile = useCallback(
-    (file: File) => {
+    (file) => {
       setError(null)
       const validationError = validateFile(file)
       
@@ -52,7 +45,7 @@ export function EmailUploader({
     [onFileSelect]
   )
 
-  const handleDragOver = useCallback((e: React.DragEvent) => {
+  const handleDragOver = useCallback((e) => {
     e.preventDefault()
     e.stopPropagation()
     if (!disabled) {
@@ -60,14 +53,14 @@ export function EmailUploader({
     }
   }, [disabled])
 
-  const handleDragLeave = useCallback((e: React.DragEvent) => {
+  const handleDragLeave = useCallback((e) => {
     e.preventDefault()
     e.stopPropagation()
     setIsDragging(false)
   }, [])
 
   const handleDrop = useCallback(
-    (e: React.DragEvent) => {
+    (e) => {
       e.preventDefault()
       e.stopPropagation()
       setIsDragging(false)
@@ -83,7 +76,7 @@ export function EmailUploader({
   )
 
   const handleFileInput = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
+    (e) => {
       const file = e.target.files?.[0]
       if (file) {
         handleFile(file)

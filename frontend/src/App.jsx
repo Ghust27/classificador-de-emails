@@ -1,27 +1,24 @@
 import { useState } from "react"
 import { Mail, Loader2 } from "lucide-react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { EmailUploader } from "@/components/EmailUploader"
-import { EmailTextInput } from "@/components/EmailTextInput"
-import { ClassificationResult } from "@/components/ClassificationResult"
-import { LoadingSpinner } from "@/components/LoadingSpinner"
-import { classifyEmailFromFile, classifyEmailFromText } from "@/lib/api"
-import type { EmailClassification, ApiError } from "@/lib/types"
-
-type TabValue = "upload" | "text"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./components/ui/tabs"
+import { Button } from "./components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card"
+import { Alert, AlertDescription, AlertTitle } from "./components/ui/alert"
+import { EmailUploader } from "./components/EmailUploader"
+import { EmailTextInput } from "./components/EmailTextInput"
+import { ClassificationResult } from "./components/ClassificationResult"
+import { LoadingSpinner } from "./components/LoadingSpinner"
+import { classifyEmailFromFile, classifyEmailFromText } from "./lib/api"
 
 function App() {
-  const [activeTab, setActiveTab] = useState<TabValue>("upload")
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const [activeTab, setActiveTab] = useState("upload")
+  const [selectedFile, setSelectedFile] = useState(null)
   const [emailText, setEmailText] = useState("")
   const [isLoading, setIsLoading] = useState(false)
-  const [result, setResult] = useState<EmailClassification | null>(null)
-  const [error, setError] = useState<string | null>(null)
+  const [result, setResult] = useState(null)
+  const [error, setError] = useState(null)
 
-  const handleFileSelect = (file: File) => {
+  const handleFileSelect = (file) => {
     setSelectedFile(file)
     setError(null)
     setResult(null)
@@ -33,7 +30,7 @@ function App() {
     setResult(null)
   }
 
-  const handleTextChange = (text: string) => {
+  const handleTextChange = (text) => {
     setEmailText(text)
     setError(null)
     setResult(null)
@@ -45,7 +42,7 @@ function App() {
     setIsLoading(true)
 
     try {
-      let classification: EmailClassification
+      let classification
 
       if (activeTab === "upload") {
         if (!selectedFile) {
@@ -65,9 +62,8 @@ function App() {
 
       setResult(classification)
     } catch (err) {
-      const apiError = err as ApiError
       setError(
-        apiError.message || "Erro ao classificar email. Verifique sua conexão e tente novamente."
+        err.message || "Erro ao classificar email. Verifique sua conexão e tente novamente."
       )
     } finally {
       setIsLoading(false)
@@ -103,7 +99,7 @@ function App() {
         <div className="space-y-6">
           {!result ? (
             <>
-              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as TabValue)}>
+              <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v)}>
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="upload">Upload de Arquivo</TabsTrigger>
                   <TabsTrigger value="text">Entrada de Texto</TabsTrigger>

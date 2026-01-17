@@ -1,14 +1,8 @@
 import * as React from "react"
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils"
 
-const Tabs = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    value?: string
-    onValueChange?: (value: string) => void
-  }
->(({ className, value, onValueChange, children, ...props }, ref) => {
+const Tabs = React.forwardRef(({ className, value, onValueChange, children, ...props }, ref) => {
   const [internalValue, setInternalValue] = React.useState(value || "")
   
   const currentValue = value !== undefined ? value : internalValue
@@ -24,15 +18,9 @@ const Tabs = React.forwardRef<
 })
 Tabs.displayName = "Tabs"
 
-const TabsContext = React.createContext<{
-  value: string
-  onValueChange: (value: string) => void
-}>({ value: "", onValueChange: () => {} })
+const TabsContext = React.createContext({ value: "", onValueChange: () => {} })
 
-const TabsList = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+const TabsList = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
@@ -44,12 +32,7 @@ const TabsList = React.forwardRef<
 ))
 TabsList.displayName = "TabsList"
 
-const TabsTrigger = React.forwardRef<
-  HTMLButtonElement,
-  React.ButtonHTMLAttributes<HTMLButtonElement> & {
-    value: string
-  }
->(({ className, value, ...props }, ref) => {
+const TabsTrigger = React.forwardRef(({ className, value, ...props }, ref) => {
   const context = React.useContext(TabsContext)
   const isActive = context.value === value
 
@@ -71,12 +54,7 @@ const TabsTrigger = React.forwardRef<
 })
 TabsTrigger.displayName = "TabsTrigger"
 
-const TabsContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement> & {
-    value: string
-  }
->(({ className, value, ...props }, ref) => {
+const TabsContent = React.forwardRef(({ className, value, ...props }, ref) => {
   const context = React.useContext(TabsContext)
   
   if (context.value !== value) {

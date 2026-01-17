@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react"
-import { Textarea } from "@/components/ui/textarea"
-import { Card } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
-
-interface EmailTextInputProps {
-  value: string
-  onChange: (value: string) => void
-  disabled?: boolean
-}
+import { Textarea } from "./ui/textarea"
+import { Card } from "./ui/card"
+import { cn } from "../lib/utils"
 
 const MAX_CHARACTERS = 800
 
@@ -15,14 +9,14 @@ export function EmailTextInput({
   value,
   onChange,
   disabled = false,
-}: EmailTextInputProps) {
+}) {
   const [characterCount, setCharacterCount] = useState(value.length)
 
   useEffect(() => {
     setCharacterCount(value.length)
   }, [value])
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChange = (e) => {
     const newValue = e.target.value
     if (newValue.length <= MAX_CHARACTERS) {
       setCharacterCount(newValue.length)

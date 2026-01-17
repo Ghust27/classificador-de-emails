@@ -1,15 +1,10 @@
 import { useState } from "react"
 import { Copy, Check, Mail, Sparkles } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import type { EmailClassification } from "@/lib/types"
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Badge } from "./ui/badge"
+import { Button } from "./ui/button"
 
-interface ClassificationResultProps {
-  result: EmailClassification
-}
-
-export function ClassificationResult({ result }: ClassificationResultProps) {
+export function ClassificationResult({ result }) {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
