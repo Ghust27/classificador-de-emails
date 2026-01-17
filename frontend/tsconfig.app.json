@@ -12,7 +12,7 @@
       "@/*": ["src/*"]
     },
 
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
