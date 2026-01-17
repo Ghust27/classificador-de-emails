@@ -6,7 +6,7 @@ Um sistema inteligente de classificação de emails que utiliza IA para categori
 
 O projeto é composto por dois componentes principais:
 
-- **Frontend**: Interface web moderna construída com React + TypeScript
+- **Frontend**: Interface web moderna construída com React + JavaScript
 - **Backend**: API REST desenvolvida com FastAPI + Python
 
 O sistema permite que usuários classifiquem emails através de:
@@ -17,7 +17,7 @@ O sistema permite que usuários classifiquem emails através de:
 
 ```
 Classificador de Emails
-├── Frontend (React + TypeScript + Tailwind)
+├── Frontend (React + JavaScript + Tailwind)
 │   └── Interface para envio e visualização de resultados
 └── Backend (FastAPI + OpenAI)
     └── API para classificação e geração de respostas
@@ -28,10 +28,9 @@ Classificador de Emails
 ## 🖥️ Frontend
 
 ### Tecnologias
-- **React 19.2** - Framework JavaScript
-- **TypeScript 5.9** - Tipagem de dados
-- **Vite 7.2** - Build tool
-- **Tailwind CSS 4.1** - Estilização
+- **React 19** - Biblioteca JavaScript para interfaces
+- **Vite 7** - Build tool
+- **Tailwind CSS 4** - Estilização
 - **Lucide React** - Ícones
 
 ### Estrutura de Pastas
@@ -39,26 +38,25 @@ Classificador de Emails
 ```
 frontend/
 ├── src/
-│   ├── App.tsx                 # Componente principal da aplicação
-│   ├── main.tsx                # Ponto de entrada
+│   ├── App.jsx                 # Componente principal da aplicação
+│   ├── main.jsx                # Ponto de entrada
 │   ├── index.css               # Estilos globais
 │   ├── components/
-│   │   ├── ClassificationResult.tsx    # Exibe resultado da classificação
-│   │   ├── EmailTextInput.tsx          # Input para texto do email
-│   │   ├── EmailUploader.tsx           # Upload de arquivo
-│   │   ├── LoadingSpinner.tsx          # Spinner de carregamento
+│   │   ├── ClassificationResult.jsx    # Exibe resultado da classificação
+│   │   ├── EmailTextInput.jsx          # Input para texto do email
+│   │   ├── EmailUploader.jsx           # Upload de arquivo
+│   │   ├── LoadingSpinner.jsx          # Spinner de carregamento
 │   │   └── ui/                         # Componentes UI reutilizáveis
-│   │       ├── alert.tsx
-│   │       ├── badge.tsx
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── tabs.tsx
-│   │       └── textarea.tsx
+│   │       ├── alert.jsx
+│   │       ├── badge.jsx
+│   │       ├── button.jsx
+│   │       ├── card.jsx
+│   │       ├── tabs.jsx
+│   │       └── textarea.jsx
 │   └── lib/
-│       ├── api.ts              # Funções para chamadas à API
-│       ├── types.ts            # Tipos TypeScript
-│       └── utils.ts            # Utilidades gerais
-└── vite.config.ts             # Configuração do Vite
+│       ├── api.js              # Funções para chamadas à API
+│       └── utils.js            # Utilidades gerais
+└── vite.config.js             # Configuração do Vite
 ```
 
 ### Como Funciona o Frontend
@@ -312,6 +310,6 @@ Projeto desenvolvido para fins educacionais e demonstração.
 
 Para contribuições ou melhorias, certifique-se de:
 - Manter a estrutura de pastas consistente
-- Seguir as convenções de código (PEP 8 para Python, ESLint para TypeScript)
+- Seguir as convenções de código (PEP 8 para Python, ESLint para JavaScript)
 - Adicionar testes quando possível
 - Documentar mudanças significativas
