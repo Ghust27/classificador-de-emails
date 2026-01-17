@@ -13,7 +13,6 @@ load_dotenv()
 from app.services.classifier import classify_email
 from app.utils.file_parser import parse_file
 
-# ============== Modelos para Documentação ==============
 
 class ClassificationResponse(BaseModel):
     """Resposta da classificação do email"""
@@ -68,7 +67,6 @@ class ErrorResponse(BaseModel):
     error: str = Field(..., description="Mensagem de erro")
     detail: Optional[str] = Field(None, description="Detalhes adicionais do erro")
 
-# ============== Configuração da API ==============
 
 app = FastAPI(
     title="Classificador de Emails API",
@@ -104,7 +102,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ============== Endpoints ==============
 
 @app.post(
     "/api/classify",
